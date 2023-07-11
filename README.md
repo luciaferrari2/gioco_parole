@@ -45,28 +45,26 @@ accettando in input un "si" --> si ha accesso al programma, altrimenti si esce
 
 >      if parola[i]==lettera:
 >     
->      list_parola_segreta[2*i]=lettera
+>          list_parola_segreta[2*i]=lettera
 >     
->      count_lettera+=1
+>          count_lettera+=1
 >     
->      count_parola+=1
+>          count_parola+=1
 
 - se la lettera non è tra le presenti (`count_lettera == 0`) hai un tentativo disponibile in meno:
 
->      if count_lettera==0: # se la parola non è presente, aggiorno i
+>      if count_lettera==0: # se la parola non è presente, aggiorno i tentativi
 >     
->      tentativi
+>          tentativi_sbagliati+=1
 >     
->      tentativi_sbagliati+=1
->     
->     print("La lettera non è presente! Riprova. Tentativi rimasti: ", tentativi_massimi-tentativi_sbagliati, "\n")
+>          print("La lettera non è presente! Riprova. Tentativi rimasti: ", tentativi_massimi-tentativi_sbagliati, "\n")
 
 - altrimenti aggiorniamo la parola segreta
 
     > else:
     > 
-    > parola_segreta=listToString.listToString(list_parola_segreta)
+    >      parola_segreta=listToString.listToString(list_parola_segreta)
     > 
-    >  print("Parola: ", parola_segreta, "\n")
+    >       print("Parola: ", parola_segreta, "\n")
 
 - Il gioco finisce quando finiscono i tentativi. Se però si indovina, il gioco continua proponendo una nuova parola.
