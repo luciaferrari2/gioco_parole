@@ -11,13 +11,13 @@ accettando in input un "si" --> si ha accesso al programma, altrimenti si esce
 
 - il programma ti permette di scegliere la difficolta di gioco [facile], [media] o [difficile] tramite i numeri 1, 2 o 3. La differenza sta nel numero di tentativi sbagliati concessi all'utenti nell'indovinare le lettere nella parola
 
->     difficolta = input("Scegli la difficoltà: \n
+>     difficolta = input("Scegli la difficoltà:
 >     
->       [1] Facile\n
+>       [1] Facile
 >     
->       [2] Medio\n
+>       [2] Medio
 >     
->       [3] Difficile\n")
+>       [3] Difficile")
 > 
 >     if  difficolta=="1":
 >     
