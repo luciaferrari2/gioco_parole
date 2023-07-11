@@ -11,6 +11,7 @@
 
 import random
 import listToString
+import livello
 
 tentativi_massimi=5
 tentativi_sbagliati=0
@@ -22,14 +23,9 @@ parola_corretta = True # se la parola precedente è corretta voglio continuare a
 accesso=input("Ti va di giocare?\n [Sì] [No]\n").lower()
 
 if accesso in ["si","sì"]:
-    difficolta = input("Scegli la difficoltà: \n[1] Facile\n [2] Medio\n [3] Difficile\n")
-    if difficolta==2:
-        tentativi_massimi-=1
-    elif difficolta==3:
-        tentativi_massimi-=3
-    
-    
-    # Iniziamo il ciclo, che ricomincia se abbiamo trovato la parola precedente
+    tentativi_massimi=livello.livello() #funzione che permette all'utente di scegliere il livello di difficoltà
+
+    # Iniziamo il ciclo, che ricomincia se non abbiamo superato il massimo di tentativi (quindi se la parola è stata trovata)
     while tentativi_sbagliati<=tentativi_massimi:
         tentativi_sbagliati=0
         parola=random.choice(lista_parole).lower()
@@ -42,14 +38,14 @@ if accesso in ["si","sì"]:
         while tentativi_sbagliati<tentativi_massimi and not count_parola==len(parola): # Esco dal ciclo se supero i tentativi o se indovino la parola
             lettera=input("Che lettera vuoi aggiungere? \n").lower()
 
-            count_lettera=0 # inseriamo un contatore per contare le lettere inserite e capire se ci sono o meno
+            count_lettera=0 # inseriamo un contatore per contare le lettere inserite e capire se sono presenti o meno
 
             for i in range(len(parola)): #scorro la parola e aggiorno la parola_segreta se trovo la lettera inserita dall'utente
                 if parola[i]==lettera:
                     list_parola_segreta[2*i]=lettera
                     count_lettera+=1
                     count_parola+=1
-            if count_lettera==0: # se la parola non è presente, aggiorno i tentativi
+            if count_lettera==0: # se la lettera non è presente, aggiorno i tentativi
                 tentativi_sbagliati+=1
                 print("La lettera non è presente! Riprova. Tentativi rimasti: ", tentativi_massimi-tentativi_sbagliati, "\n")
             else:
@@ -57,7 +53,7 @@ if accesso in ["si","sì"]:
                 #parola_segreta="".join(map(str,list_parola_segreta))
                 print("Parola: ", parola_segreta, "\n")
 
-        if count_parola==len(parola):
+        if count_parola>=len(parola):
             print("Parola trovata! Puoi continuare il gioco.\n")
 
     print("Hai perso! Tentativi esauriti.\n")
